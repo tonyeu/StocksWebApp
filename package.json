@@ -1,0 +1,32 @@
+{
+  "name": "stock_info_web_app",
+  "version": "1.0.0",
+  "description": "Financial information os stocks",
+  "author": "Antonio Ramos <appa.ramos@gmail.com>",
+  "main": "./target/app.js",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "node ./target/app.js",
+    "clean": "rd /S /Q node_modules && rd /S /Q target",
+    "dev": "npm install && npm run tsc",
+    "prod": "npm install --production --silent && npm run tsc",
+    "clean-build-dev": "npm run clean && npm run dev",
+    "clean-build": "npm run clean && npm run prod",
+    "docker-build": "docker build -t stocks_info/web-app .",
+    "docker-stop": "docker stop /StocksWebApp",
+    "docker-remove": "docker rm /StocksWebApp",
+    "docker-stop-remove": "(npm run docker-stop || exit 0) && (npm run docker-remove || exit 0)",
+    "docker-run": "docker run --name StocksWebApp -p 10000:8080 -d stocks_info/web-app",
+    "deploy": "npm run clean-build && npm run docker-build && npm run docker-stop-remove && npm run docker-run",
+    "deploy-dev": "npm run clean-build-dev && npm run docker-build && npm run docker-stop-remove && npm run docker-run"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333",
+    "typescript-tslint-plugin": "^0.3.1"
+  }
+}
