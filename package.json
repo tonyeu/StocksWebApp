@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Financial information os stocks",
   "author": "Antonio Ramos <appa.ramos@gmail.com>",
+  "homepage": "https://github.com/tonyeu/StocksWebApp#readme",
   "main": "./target/app.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/tonyeu/StocksWebApp.git"
+  },
   "scripts": {
     "tsc": "tsc",
     "start": "node ./target/app.js",
